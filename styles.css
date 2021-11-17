@@ -1,0 +1,179 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+section, header {
+    border: 1px solid;
+    margin: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+.description {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+    color: #333333;
+}
+
+.code-example {
+    display: block;
+    padding: 9px;;
+    margin: 0 0 10px;
+
+    font-size: 13px;
+    line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+
+    background-color: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+
+#id-example {
+    background-color: antiquewhite;
+}
+
+.class-example {
+    box-shadow: 5px 5px 5px black;
+}
+
+.links a {
+    text-decoration: none;
+}
+
+.link-visited-a a:link {
+    color: red;
+}
+
+.link-visited-a a:visited {
+    color: green;
+}
+
+.title-x-plus-y + .subtitle-x-plus-y {
+    color: red;
+}
+
+.x-more-y > p {
+    background-color: #5252ef;
+}
+
+.x-y p {
+    background-color: #5252ef;
+}
+
+.title-x-tilde-y ~ .subtitle-x-tilde-y {
+    color: red;
+}
+
+.link-with-title a[title] {
+    color: red;
+}
+
+.link-with-attr-and-value a[href="https://yandex.by/"] {
+    color: red;
+}
+
+.link-with-attr-and-some-value a[href*="yandex.by"] {
+    color: red;
+}
+
+.link-with-attr-start-value a[href^="https://"] {
+    color: red;
+}
+
+.link-with-attr-end-value a[href$=".jpg"] {
+    color: red;
+}
+
+.link-with-data-type a[data-filetype="image"] {
+    color: red;
+}
+
+.link-with-some-data-type a[data-info~="external"] {
+    color: red;
+}
+.link-with-some-data-type a[data-info~="image"] {
+    border: 1px solid black;
+}
+
+.input-checked input {
+    appearance: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+}
+
+.input-checked input[type="radio"]:checked {
+    border: 6px solid black;
+}
+
+.not-container p:not(.not-title) {
+    color: red;
+}
+
+.big-first-letter::first-letter {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.big-first-line::first-line {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.nth-child-item:nth-child(even) {
+    background-color: #999999;
+}
+
+.nth-child-last-item:nth-last-child(even) {
+    background-color: #999999;
+}
+
+.nth-of-type-container p:nth-of-type(2n+1) {
+    background-color: #999999;
+}
+
+.nth-last-of-type-container span:nth-last-of-type(2) {
+    background-color: lime;
+}
+
+.first-child-container p:first-child {
+    background-color: lime;
+}
+
+.last-child-container p:last-child {
+    background-color: lime;
+}
+
+.only-child-container p:only-child {
+    background-color: lime;
+}
+
+.only-of-type-container :only-of-type {
+    color: red;
+}
+
+.first-of-type-container :first-of-type {
+    background-color: lime;
+}

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h2>27 CSS селекторов</h2>
+    </header>
+    <section>
+        <span class="title">№.1 Селектор *</span>
+        <span class="description">
+            В css свойствах с помощью этого селектора установлены font-family и у всех элементов удалены дефолтные margin и padding
+        </span>
+        <div class="code-example">
+            * {
+                font-family: 'Open Sans', sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+        </div>
+    </section>
+
+    <section id="id-example">
+        <span class="title">№.2 Селектор вида #X</span>
+        <span class="description">
+            Знак решетки перед CSS-селектором Х выделит нам элемент с id = Х.
+        </span>
+        <div class="code-example">
+            #id-example {
+                background-color: antiquewhite;
+            }
+        </div>
+    </section>
+
+    <section class="class-example">
+        <span class="title">№.3 Селектор вида .X</span>
+        <span class="description">
+            Это CSS-селектор класса Х. Разница между id и классом заключается в том, что одному классу
+            может принадлежать несколько элементов на странице. Используйте классы, когда вы хотите применить
+            стиль к нескольким однотипным элементам.
+        </span>
+        <div class="code-example">
+            .class-example {
+                box-shadow: 5px 5px 5px black;
+            }
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.4 Селектор вида X Y</span>
+        <span class="description">
+            CSS-селектор дочерних элементов встречается чаще всего. Если вам надо выделить элементы определенного
+            типа из множества дочерних элементов, используете этот селектор. Например, вам надо убрать линию из всех ссылок
+            которые находятся в классе .links. В этом случае используйте этот селектор.
+        </span>
+        <div class="code-example">
+            .links a {
+                text-decoration: none;
+            }
+        </div>
+        <div class="links">
+            .links
+            <a href="https://www.google.by/">Google</a>
+            <a href="https://yandex.by/">Яндекс</a>
+        </div>
+        <div class="extra-links">
+            .extra-links
+            <a href="https://www.google.by/">Google</a>
+            <a href="https://yandex.by/">Яндекс</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.5 Селектор вида X</span>
+        <span class="description">
+            Если вы хотите охватить все элемента одного тега используйте селектор по тегу
+        </span>
+        <div class="code-example">
+            section, header {
+                border: 1px solid;
+                margin: 8px;
+                padding: 8px;
+                display: flex;
+                flex-direction: column;
+            }
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.6 Селектор вида X:visited и X:link</span>
+        <span class="description">
+            Мы используем псевдо-класс :link, для выделения всех ссылок, на которые еще не кликнули.
+            Если же нам надо применить определенный стиль к уже посещенным ссылкам, то используем псевдо-класс :visited.
+            <p>
+                Важно! Ваш браузер запоминает какие ссылки вы посещали, если вы применили селектор :link и он не изменил цвет,
+                значит вы уже посещали эту страницу.
+            </p>
+        </span>
+        <div class="code-example">
+            a:link { color: red; }
+            a:visited { color: green; }
+        </div>
+        <div class="link-visited-a">
+            <a href="https://test-address.com/" target="_blank">Не существующий адрес</a>
+            <a href="https://yandex.by/" target="_blank">Яндекс</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.7 Селектор вида Х+Y</span>
+        <span class="description">
+            Выделяет последующий элемент. Он будет выбирать только элемент типа Y, который идет сразу после элемента Х.
+            В примере ниже все только первый .subtitle-x-plus-y
+        </span>
+        <div class="code-example">
+            .title-x-plus-y + .subtitle-x-plus-y {
+                color: red;
+            }
+        </div>
+        <div class="x-plus-y">
+            <p class="title-x-plus-y">.title-x-plus-y</p>
+            <p class="subtitle-x-plus-y">.subtitle-x-plus-y</p>
+            <p class="subtitle-x-plus-y">.subtitle-x-plus-y</p>
+            <p class="subtitle-x-plus-y">.subtitle-x-plus-y</p>
+            <p class="subtitle-x-plus-y">.subtitle-x-plus-y</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.8 Селектор вида Х>Y</span>
+        <span class="description">
+            Разница между стандартными Х Y и X > Y состоит в том, что рассматриваемый CSS-селектор будет выбирать
+            только непосредственные дочерние элементы. Например, рассмотрим следующий код.
+        </span>
+        <div class="code-example">
+            &lt;div class="x-more-y"&gt;
+                &lt;p&gt;Параграф в классе .x-more-y&lt;/p&gt;
+                &lt;p&gt;Параграф в классе .x-more-y&lt;/p&gt;
+                &lt;div&gt;
+                    &lt;p&gt;Параграф внутри другого div&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;p&gt;Параграф в классе .x-more-y&lt;/p&gt;
+            &lt;/div&gt;
+        </div>
+        <div class="code-example">
+            .x-more-y > p {
+                background-color: #5252ef;
+            }
+        </div>
+
+        <div class="x-more-y">
+            <p>Параграф в классе .x-more-y</p>
+            <p>Параграф в классе .x-more-y</p>
+            <div>
+                <p>Параграф внутри другого div</p>
+            </div>
+            <p>Параграф в классе .x-more-y</p>
+        </div>
+
+        <div class="code-example">
+            .x-y p {
+                background-color: #5252ef;
+            }
+        </div>
+
+        <div class="x-y">
+            <p>Параграф в классе .x-more-y</p>
+            <p>Параграф в классе .x-more-y</p>
+            <div>
+                <p>Параграф внутри другого div</p>
+            </div>
+            <p>Параграф в классе .x-more-y</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.9 Селектор вида Х~Y</span>
+        <span class="description">
+            Этот CSS-селектор очень похож на X + Y, однако, является менее строгим. При использовании .class1 + .class2 будет
+            выбрать только первый элемент, идущий за Х. В данном случае будут выбраны все элементы .subtitle-x-tilde-y, идущие за .title-x-tilde-y.
+        </span>
+        <div class="code-example">
+            .title-x-tilde-y ~ .subtitle-x-tilde-y {
+                color: red;
+            }
+        </div>
+        <div class="x-tilde-y">
+            <p class="subtitle-x-tilde-y">.subtitle-x-tilde-y но перед .title-x-tilde-y</p>
+            <p class="title-x-tilde-y">.title-x-tilde-y</p>
+            <p class="subtitle-x-tilde-y">.subtitle-x-tilde-y</p>
+            <p class="subtitle-x-tilde-y">.subtitle-x-tilde-y</p>
+            <div>
+                <p class="subtitle-x-tilde-y">.subtitle-x-tilde-y</p>
+            </div>
+            <p class="subtitle-x-tilde-y">.subtitle-x-tilde-y</p>
+            <p class="subtitle-x-tilde-y">.subtitle-x-tilde-y</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.10 Селектор вида X[title]</span>
+        <span class="description">
+            В CSS-селекторах также можно использовать атрибуты. Например в данном примере я выделил все ссылки,
+            имеющие атрибут title. Остальные ссылки останутся не затронутыми.
+        </span>
+        <div class="code-example">
+            .link-with-title a[title] {
+                color: red;
+            }
+        </div>
+        <div class="link-with-title">
+            <a title="Google" href="https://www.google.by/">Google c title</a>
+            <a href="https://yandex.by/">Яндекс</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.11 Селектор вида X[href="Foo"]</span>
+        <span class="description">
+            Находит все теги с атрибутом и определённым значением
+        </span>
+        <div class="code-example">
+            .link-with-attr-and-value a[href="https://yandex.by/"] {
+                color: red;
+            }
+        </div>
+        <div class="link-with-attr-and-value">
+            <a href="https://www.google.by/">Google</a>
+            <a href="https://yandex.by/">Яндекс</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.12 Селектор вида X[attr*= ]</span>
+        <span class="description">
+            CSS-селектор без пункта 11 слишком строгий, если мы после url уберём / - он не сработает.
+            Этот селектор будет искать значение где-нибудь в атрибуте
+        </span>
+        <div class="code-example">
+            .link-with-attr-and-some-value a[href*="yandex.by"] {
+                color: red;
+            }
+        </div>
+        <div class="link-with-attr-and-some-value">
+            <a href="https://www.google.by/">https://www.google.by/</a>
+            <a href="https://yandex.by/">https://yandex.by/</a>
+            <a href="http://yandex.by/">http://yandex.by/</a>
+            <a href="http://yandex.by">http://yandex.by</a>
+            <a href="http://yandex.by/my-search/info?id=2">http://yandex.by/my-search/info?id=2</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.13 Селектор вида X[attr^=value]</span>
+        <span class="description">
+            Выбирает элементы с атрибутом attr (его имя — это значение в квадратных скобках), значение которого начинается с value.
+        </span>
+        <div class="code-example">
+            .link-with-attr-start-value a[href^="https://"] {
+                color: red;
+            }
+        </div>
+        <div class="link-with-attr-start-value">
+            <a href="https://www.google.by/">https://www.google.by/</a>
+            <a href="http://yandex.by/">http://yandex.by/</a>
+            <a href="http://yandex.by">http://yandex.by</a>
+            <a href="http://yandex.by/my-search/info?id=2">http://yandex.by/my-search/info?id=2</a>
+            <a href="https://yandex.by/">https://yandex.by/</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.14 Селектор вида X[attr$=value]</span>
+        <span class="description">
+            Выбирает элементы с атрибутом attr, значение которого заканчивается на value.
+        </span>
+        <div class="code-example">
+            .link-with-attr-end-value a[href$=".jpg"] {
+                color: red;
+            }
+        </div>
+        <div class="link-with-attr-end-value">
+            <a href="https://www.google.jpg">https://www.google.jpg</a>
+            <a href="http://yandex.by/">http://yandex.by/</a>
+            <a href="http://yandex.jpg">http://yandex.jpg</a>
+            <a href="http://yandex.by/my-search/info?id=2">http://yandex.by/my-search/info?id=2</a>
+            <a href="https://yandex.by/">https://yandex.by/</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.15 Селектор вида X[data-*="foo"]</span>
+        <span class="description">
+            Как же нам теперь написать CSS-селектор, который бы выделял ссылки на все виды изображений? Например, мы могли бы написать так:
+        </span>
+        <div class="code-example">
+            a[href$=".JPG"],
+            a[href$=". JPEG"],
+            a[href$=".PNG"],
+            a[href$=".GIF"] {
+                color: red;
+            }
+        </div>
+        <span class="description">
+            Но это геморрой и неэффективно. Другим возможным решением является применение пользовательских атрибутов.
+            Почему бы нам не добавить наш собственный атрибут data-filetype в каждую ссылку?
+            Теперь мы можем выделить такие ссылки при помощи данного CSS-селектора:
+        </span>
+        <div class="code-example">
+            .link-with-data-type a[data-filetype="image"] {
+                color: red;
+            }
+        </div>
+        <div class="link-with-data-type">
+            <a data-filetype="image" href="https://www.google.jpg">https://www.google.jpg</a>
+            <a href="http://yandex.by/">http://yandex.by/</a>
+            <a href="http://yandex.jpg">http://yandex.jpg</a>
+            <a data-filetype="image" href="http://yandex.by/my-search/info?id=2">http://yandex.by/my-search/info?id=2</a>
+            <a href="https://yandex.by/">https://yandex.by/</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.16 Селектор вида  X[foo~="bar"]</span>
+        <span class="description">
+            Тильда (~) позволяет выделить определенный атрибут из списка атрибутов, разделенных запятой.
+        </span>
+        <div class="code-example">
+            .link-with-some-data-type a[data-info~="external"] { color: red; }
+            .link-with-some-data-type a[data-info~="image"] { border: 1px solid black; }
+        </div>
+        <div class="link-with-some-data-type">
+            <a data-info="some-value external" href="https://www.google.by/">Google</a>
+            <a data-info="some-value image" href="https://yandex.by/">Яндекс</a>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.17 Селектор вида X:checked</span>
+        <span class="description">
+            Этот псевдокласс выделяет только элементы пользовательского интерфейса, такие как переключатель или флажок. Причем те, которые отмечены/выбраны.
+        </span>
+        <div class="code-example">
+            .input-checked input[type="radio"]:checked {
+                border: 6px solid black;
+            }
+        </div>
+        <div class="input-checked">
+            <form>
+                <input type="radio" id="contactChoice1"
+                       name="contact" value="email">
+                <label for="contactChoice1">Email</label>
+
+                <input type="radio" id="contactChoice2"
+                       name="contact" value="phone">
+                <label for="contactChoice2">Phone</label>
+
+                <input type="radio" id="contactChoice3"
+                       name="contact" value="mail">
+                <label for="contactChoice3">Mail</label>
+            </form>
+        </div>
+        <form>
+            <input type="radio" id="contactChoice11"
+                   name="contact" value="email">
+            <label for="contactChoice1">Email</label>
+
+            <input type="radio" id="contactChoice22"
+                   name="contact" value="phone">
+            <label for="contactChoice2">Phone</label>
+
+            <input type="radio" id="contactChoice33"
+                   name="contact" value="mail">
+            <label for="contactChoice3">Mail</label>
+        </form>
+    </section>
+
+    <section>
+        <span class="title">№.18 Селектор вида X:not(selector)</span>
+        <span class="description">
+            Выбирает все элементы за исключение указанного
+        </span>
+        <div class="code-example">
+            .not-container p:not(.not-title) {
+                color: red;
+            }
+        </div>
+        <div class="not-container">
+            <p class="not-subtitle">not-subtitle</p>
+            <p class="not-title">not-title</p>
+            <p class="not-subtitle">not-subtitle</p>
+            <p class="not-subtitle">not-subtitle</p>
+            <p class="not-subtitle">not-subtitle</p>
+            <p class="not-subtitle">not-subtitle</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.19 Селектор вида X::псевдо элемент</span>
+        <span class="description">
+            Есть псевдоэлементы для оформления фрагментов элементов
+            ::first-line
+            ::first-letter
+        </span>
+        <div class="code-example">
+            .big-first-letter::first-letter {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+
+            .big-first-line::first-line {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+        </div>
+        <p class="big-first-letter">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="big-first-line">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+    </section>
+
+    <section>
+        <span class="title">№.20 Селектор вида X:nth-child(n)</span>
+        <span class="description">
+            :nth-child() находит один или более элементов, основываясь на их позиции среди группы соседних элементов.
+            odd - нечётные
+            even - чётные
+            N - определённый
+            AN+B - все на этих позициях
+        </span>
+        <div class="code-example">
+            .nth-child-item:nth-child(even) {
+                background-color: #999999;
+            }
+        </div>
+        <div class="nth-child-container">
+            <p class="nth-child-item">nth-child-item</p>
+            <p class="nth-child-item">nth-child-item</p>
+            <p class="nth-child-item">nth-child-item</p>
+            <p class="nth-child-item">nth-child-item</p>
+            <p class="nth-child-item">nth-child-item</p>
+            <p class="nth-child-item">nth-child-item</p>
+            <p class="nth-child-item">nth-child-item</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.21 Селектор вида X:nth-last-child(n)</span>
+        <span class="description">
+            :nth-last-child(an+b) находит элемент, имеющий an+b-1 потомков после данной позиции в дереве документа,
+            значение для n может быть положительным или нулевым, а также имеющий родительский элемент.
+            В результате, он функционирует так же, как и :nth-child, кроме того, что выбирает элементы, считая
+            в обратном порядке, с конца списка потомков, не с начала.
+        </span>
+        <div class="code-example">
+            .nth-child-last-item:nth-last-child(even) {
+                background-color: #999999;
+            }
+        </div>
+        <div class="nth-child-lsat-container">
+            <p class="nth-child-last-item">nth-child-last-item</p>
+            <p class="nth-child-last-item">nth-child-last-item</p>
+            <p class="nth-child-last-item">nth-child-last-item</p>
+            <p class="nth-child-last-item">nth-child-last-item</p>
+            <p class="nth-child-last-item">nth-child-last-item</p>
+            <p class="nth-child-last-item">nth-child-last-item</p>
+            <p class="nth-child-last-item">nth-child-last-item</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.22 Селектор вида X:nth-of-type</span>
+        <span class="description">
+            :nth-of-type() находит один или более элементов с заданным тегом, основываясь на их позиции среди группы соседних элементов.
+        </span>
+        <div class="code-example">
+            .nth-of-type-container p:nth-of-type(2n+1) {
+                background-color: #999999;
+            }
+        </div>
+        <div class="nth-of-type-container">
+            <div>Этот элемент не учитывается.</div>
+            <p>Первый параграф.</p>
+            <p>Второй параграф.</p>
+            <div>Этот элемент не учитывается.</div>
+            <p>Третий параграф.</p>
+            <p>Четвёртый параграф.</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.23 Селектор вида X:nth-last-of-type(n)</span>
+        <span class="description">
+            :nth-of-type() находит один или более элементов с заданным тегом, основываясь на их позиции среди группы соседних элементов.
+        </span>
+        <div class="code-example">
+            .nth-last-of-type-container span:nth-last-of-type(2) {
+                background-color: lime;
+            }
+        </div>
+        <div class="nth-last-of-type-container">
+            <span>Это span.</span>
+            <span>Это другой span.</span>
+            <em>Это текст будет курсивом.</em>
+            <span>Круто, этот span лаймовый!!!</span>
+            <div>Это вообще не span.</div>
+            <span>Это ещё один последний span.</span>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.24 Селектор вида X:first-child</span>
+        <span class="description">
+            :first-child находит любой элемент, являющийся первым в своём родителе.
+        </span>
+        <div class="code-example">
+            .first-child-container p:first-child {
+                background-color: lime;
+            }
+        </div>
+        <div class="first-child-container">
+            <p>Этот текст выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.25 Селектор вида X:last-child</span>
+        <span class="description">
+            :last-child находит любой элемент, являющийся последним в своём родителе.
+        </span>
+        <div class="code-example">
+            .last-child-container p:last-child {
+                background-color: lime;
+            }
+        </div>
+        <div class="last-child-container">
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст не выбран!</p>
+            <p>Этот текст выбран!</p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.25 Селектор вида X:only-child</span>
+        <span class="description">
+            :only-child находит любой элемент, являющийся единственным потомком родителя. Это тоже, что и
+            :first-child:last-child или :nth-child(1):nth-last-child(1), но с меньшей специфичностью.
+        </span>
+        <div class="code-example">
+            .last-child-container p:last-child {
+                background-color: lime;
+            }
+        </div>
+        <div class="only-child-container">
+            <p> Один параграф.</p>
+        </div>
+        <div class="only-child-container">
+            <p> Два параграфа </p>
+            <p> Два параграфа </p>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.26 Селектор вида X:only-of-type</span>
+        <span class="description">
+            :only-of-type  выбирает такой элемент, который является единственным потомком такого типа.
+        </span>
+        <div class="code-example">
+            .only-of-type-container :only-of-type {
+                color: red;
+            }
+        </div>
+        <div class="only-of-type-container">
+            <div>Я `div` №1.</div>
+            <p>Я тут единственный `p` элемент.</p>
+            <div>Я `div` №2.</div>
+            <div>Я `div` №3.
+                <i>Я единственный потомок типа `i`.</i>
+                <em>Я `em` №1.</em>
+                <em>Я `em` №2.</em>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <span class="title">№.27 Селектор вида X:first-of-type</span>
+        <span class="description">
+            :first-of-type находит первого потомка своего типа среди детей родителя.
+        </span>
+        <div class="code-example">
+            .first-of-type-container :first-of-type {
+                background-color: lime;
+            }
+        </div>
+        <div class="first-of-type-container">
+            <span>Это span первый!</span>
+            <span>Это span нет. :(</span>
+            <span>что насчёт этого <em>вложенного элемента</em>?</span>
+            <footer>Это другой тег</footer>
+            <span>Грустно, это тоже нет...</span>
+        </div>
+    </section>
+</body>
+</html>
